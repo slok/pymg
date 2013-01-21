@@ -3,7 +3,7 @@ from django.shortcuts import (render_to_response,
 from django.http import HttpResponse
 
 from imagecreator import utils
-from imagecreator.draw import Square
+from imagecreator.draw import Square, Circle
 
 
 def index(request):
@@ -14,14 +14,26 @@ def index(request):
                             context_instance=RequestContext(request))
 
 
-def draw_width_height(request, width, height):
+def draw_square_width_height(request, width, height):
     #Create the image
     width, height = int(width), int(height)
     color = utils.random_color()
     s = Square(width, height, color)
-    s.draw()
+    return draw_factory(s)
+
+
+def draw_circle_width_height(request, radius):
+    #Create the image
+    radius = int(radius)
+    color = utils.random_color()
+    s = Circle(radius, color)
+    return draw_factory(s)
+
+
+def draw_factory(img):
+    img.draw()
 
     #Get the content of the image in memory
-    data = s.get_img_data()
+    data = img.get_img_data()
 
     return HttpResponse(data, content_type="image/png")

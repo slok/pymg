@@ -71,7 +71,6 @@ class Figure(object):
         return str_img
 
 
-
 class Square(Figure):
 
     def draw(self):
