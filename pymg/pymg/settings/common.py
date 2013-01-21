@@ -181,6 +181,7 @@ THIRD_PARTY_APPS = (
 
 LOCAL_APPS = (
     "imageserver",
+    "imagecreator",
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
