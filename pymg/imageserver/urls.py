@@ -7,8 +7,8 @@ urlpatterns = patterns('',
     # /
     url(r'^$', imageserver.views.index, name="index"),
 
-    # /100x200 or /s/100x200
-    url(r'^(s/)?(?P<width>\d+)x(?P<height>\d+)$',
+    # /100x200 or /s/100x200 or /100
+    url(r'^(s/)?(?P<width>\d+)(x(?P<height>\d+))?(/(?P<color>\w+))?$',
         imageserver.views.draw_square_width_height,
         name="draw_square_width_height"),
 

@@ -14,10 +14,16 @@ def index(request):
                             context_instance=RequestContext(request))
 
 
-def draw_square_width_height(request, width, height):
+def draw_square_width_height(request, width, height, color):
+    #check if is a square (two sides equal)
+    if not height:
+        height = width
+
+    if not color:
+        color = utils.random_color()
     #Create the image
     width, height = int(width), int(height)
-    color = utils.random_color()
+
     s = Square(width, height, color)
     return draw_factory(s)
 
