@@ -46,7 +46,7 @@ def check_color_int(int_color):
 
 
 def check_color(color):
-    if isinstance(color, str):
-        return check_color_str(color)
-    else:
+    if isinstance(color, int):
         return check_color_int(color)
+    else:
+        return check_color_str(color)
